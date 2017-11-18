@@ -1,0 +1,38 @@
+<% include partials/header %>
+
+    <h1>Add Custommer</h1>
+    
+    <% if(errors){ %>
+        <% errors.forEach(function(error){ %>
+            <%= error.msg %>
+        <% }) %>
+    <% } %>
+    
+    <form method="POST" action="/users/add">
+        <label>First Name</label><br>
+        <input type="text" name="first_name">
+        <br>
+        <label>Last Name</label><br>
+        <input type="text" name="last_name">
+        <br>
+        <label>Age</label><br>
+        <input type="text" name="age">
+        <br>
+        <label>Email</label><br>
+        <input type="text" name="email">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h1><%= title %></h1>
+    
+    <% users.forEach(function(user){ %>
+        <%= user.first_name %>
+            <%= user.last_name %> -
+                <%= user.age %> -
+                <%= user.email %> - 
+                <a href="#" class="deleteUser" data-id="<%= user._id %>">Delete</a><br>
+    
+    <% }) %>
+    
+<% include partials/footer %>
